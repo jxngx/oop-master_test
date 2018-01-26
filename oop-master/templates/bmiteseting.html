@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block body %}
+    {% from "includes/_formhelper.html" import render_field %}
+    <section class="container">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BMI Calculator</div>
+                <div class="panel-body">
+                    <div class="container-mtd">
+                        <form action="calculate()" method="POST">
+                        <p>This is the BMI calculator</p>
+                        <div class="form-group">
+                                {{ render_field(form.weight, class_="form-control") }} <!-- kg -->
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.height, class_="form-control") }} <!-- m -->
+                            </div>
+                            <button type="submit" class="btn btn-primary">calculate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- if bmi not good can use our food tracker to tracker your calories, or fitness
+{% endblock %}

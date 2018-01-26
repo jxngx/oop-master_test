@@ -1,0 +1,54 @@
+<html>
+<link rel="stylesheet" href="./static/css/trackercss.css">
+{% extends 'layout.html' %}
+
+{% block body %}
+{% from "includes/_formhelper.html" import render_field %}
+    <body>
+    <style>
+        body{
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        table{
+            width:100%;
+            text-align: center;
+            word-break: break-all;
+            margin: auto;
+        }
+        h1{
+            color:black;
+        }
+    </style>
+    <input type="text" id="search" placeholder="Search for food" title="Type in a name" onkeyup="Search()">
+<table border="1" id="table1">
+{% for key, value in calories.items() %}
+   <tr>
+        <th> {{ key }} </th>
+        <td> {{ value }} </td>
+        <td><button type="button" onclick="value(count)">Add</button></td>
+   </tr>
+{% endfor %}
+</table>
+<script>
+    function Search() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+</body>
+{% endblock %}
+</html>
